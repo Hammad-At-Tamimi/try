@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Arsis ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    overflow:hidden;
+    background:linear-gradient(-45deg,#ff758c,#ff7eb3,#ffc3a0,#ffd6e0);
+    background-size:400% 400%;
+    animation:bg 12s ease infinite;
+    color:white;
+}
+
+@keyframes bg{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+}
+
+.screen{
+    width:100%;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    text-align:center;
+    padding:20px;
+}
+
+h1{
+    font-family:'Dancing Script',cursive;
+    font-size:5rem;
+    text-shadow:0 0 20px rgba(255,255,255,.5);
+}
+
+.subtitle{
+    font-size:1.5rem;
+    margin-top:15px;
+}
+
+button{
+    margin-top:30px;
+    padding:15px 35px;
+    border:none;
+    border-radius:50px;
+    font-size:18px;
+    font-weight:bold;
+    cursor:pointer;
+    background:white;
+    color:#ff4f81;
+    transition:.3s;
+}
+
+button:hover{
+    transform:scale(1.08);
+}
+
+#main{
+    display:none;
+}
+
+.card{
+    max-width:900px;
+    background:rgba(255,255,255,.15);
+    backdrop-filter:blur(12px);
+    border-radius:25px;
+    padding:35px;
+    box-shadow:0 10px 30px rgba(0,0,0,.2);
+}
+
+.typing{
+    min-height:280px;
+    line-height:2;
+    font-size:18px;
+    white-space:pre-wrap;
+}
+
+.footer{
+    margin-top:25px;
+    font-family:'Dancing Script',cursive;
+    font-size:2rem;
+}
+
+.heart{
+    position:absolute;
+    color:white;
+    animation:float linear forwards;
+}
+
+@keyframes float{
+    from{
+        transform:translateY(100vh);
+        opacity:1;
+    }
+    to{
+        transform:translateY(-100px);
+        opacity:0;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<audio id="music" autoplay loop>
+    <source src="The 1975 - About You (Cover by Wolfy ft. @feyviolyn ) - (320 Kbps).mp3" type="audio/mpeg">
+</audio>
+
+<div id="intro" class="screen">
+    <h1>🎂 Happy Birthday 🎂</h1>
+    <div class="subtitle">
+        Untuk Arsis Qolbi Mulya Lestari ❤️
+    </div>
+    <button onclick="startGift()">
+        Buka Hadiah ❤️
+    </button>
+</div>
+
+<div id="main" class="screen">
+    <div class="card">
+        <h1 style="font-size:4rem">
+            Happy 23rd Birthday ❤️
+        </h1>
+
+        <div id="typing" class="typing"></div>
+
+        <div class="footer">
+            With Love ❤️
+        </div>
+    </div>
+</div>
+
+<script>
+
+const text = `
+Untuk Arsis Qolbi Mulya Lestari ❤️
+
+Selamat ulang tahun yang ke-23.
+
+Hari ini adalah hari yang sangat spesial,
+karena 23 tahun yang lalu lahir seseorang
+yang begitu luar biasa.
+
+Seseorang yang mampu membuat dunia terasa
+lebih indah hanya dengan senyumnya.
+
+Terima kasih karena telah hadir di dunia ini.
+
+Terima kasih karena selalu menjadi pribadi
+yang kuat, baik, dan penuh ketulusan.
+
+Semoga di usia yang baru ini,
+setiap langkahmu dipenuhi kebahagiaan.
+
+Semoga kesehatan selalu menyertaimu.
+
+Semoga rezekimu semakin luas.
+
+Semoga segala cita-cita dan impianmu
+satu per satu menjadi kenyataan.
+
+Ketika ada kesedihan,
+semoga kamu selalu menemukan alasan
+untuk kembali tersenyum.
+
+Ketika ada kesulitan,
+semoga kamu selalu diberikan kekuatan.
+
+Dan ketika kamu merasa sendiri,
+ingatlah bahwa ada seseorang
+yang selalu mendoakan kebahagiaanmu.
+
+Terima kasih sudah menjadi bagian
+yang begitu berarti.
+
+Semoga umurmu panjang,
+hatimu selalu tenang,
+dan hidupmu dipenuhi keberkahan.
+
+Selamat ulang tahun yang ke-23 Arsis ❤️
+
+Semoga hari ini menjadi awal
+dari tahun yang penuh kebahagiaan,
+cinta, dan cerita indah.
+
+You deserve all the happiness in the world.
+
+I wish you nothing but smiles,
+success, health and endless happiness.
+
+Happy Birthday My Favorite Person ❤️
+`;
+
+let i = 0;
+
+function typeWriter(){
+    if(i < text.length){
+        document.getElementById("typing").innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typeWriter,40);
+    }
+}
+
+function startGift(){
+
+    document.getElementById("intro").style.display="none";
+    document.getElementById("main").style.display="flex";
+
+    const music=document.getElementById("music");
+
+    music.play().catch(()=>{});
+
+    typeWriter();
+}
+
+function createHeart(){
+
+    const heart=document.createElement("div");
+
+    heart.className="heart";
+    heart.innerHTML="❤️";
+
+    heart.style.left=Math.random()*100+"vw";
+    heart.style.fontSize=(20+Math.random()*30)+"px";
+    heart.style.animationDuration=(4+Math.random()*4)+"s";
+
+    document.body.appendChild(heart);
+
+    setTimeout(()=>{
+        heart.remove();
+    },8000);
+}
+
+setInterval(createHeart,250);
+
+// mencoba autoplay
+window.onload=()=>{
+    document.getElementById("music").play().catch(()=>{});
+}
+</script>
+
+</body>
+</html>
